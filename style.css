@@ -1,0 +1,56 @@
+body {
+  font-family: system-ui, sans-serif;
+  padding: 20px;
+}
+
+.controls {
+  margin-bottom: 12px;
+}
+
+button {
+  margin-right: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+/* grid 只负责 display */
+#grid {
+  display: grid;
+  gap: 6px;
+}
+
+/* 像素格 */
+.pixel {
+  width: 30px;
+  height: 30px;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  position: relative;
+}
+
+/* 颜色 */
+.pixel.white { background: #ffffff; }
+.pixel.black { background: #000000; }
+.pixel.red   { background: #ff0000; }
+.pixel.green { background: #00ff00; }
+.pixel.blue   { background: #0066ff; }
+.pixel.yellow { background: #ffcc00; }
+
+/* A1 / B2 标注 */
+.pixel::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: 2px;
+  right: 3px;
+  font-size: 7px;
+  color: #999;
+  pointer-events: none;
+}
+
+/* 导出区域 */
+#export-area {
+  display: inline-block;
+  padding: 8px;
+  background: #ffffff;
+}
