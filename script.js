@@ -32,7 +32,7 @@ let currentColor = "black";
       const colLabel = c + 1;
       pixel.dataset.label = `${rowLabel}${colLabel}`;
 
- pixel.addEventListener("mousedown", () => {
+pixel.addEventListener("mousedown", () => {
   isPainting = true;
 
   currentStroke = {
@@ -40,7 +40,8 @@ let currentColor = "black";
     changed: new Set()
   };
 
-  paintPixel(pixel);
+  // ⭐ 延后一拍，确保被记录进 stroke
+  setTimeout(() => paintPixel(pixel), 0);
 });
 
 pixel.addEventListener("mouseenter", () => {
@@ -59,8 +60,9 @@ pixel.addEventListener("touchstart", (e) => {
     changed: new Set()
   };
 
-  paintPixel(pixel);
+  setTimeout(() => paintPixel(pixel), 0);
 });
+
 
 pixel.addEventListener("touchmove", (e) => {
   e.preventDefault();
