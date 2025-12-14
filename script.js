@@ -4,7 +4,7 @@ const grid = document.getElementById("grid");
 
 /* ====== 只改这里就能换尺寸 ====== */
 const GRID = {
-  cols: 15,
+  cols: 10,
   rows: 15
 };
 /* ================================= */
