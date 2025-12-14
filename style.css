@@ -21,7 +21,15 @@ html, body {
 
 /* 按钮 */
 .controls {
-  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* 三行之间的距离 */
+}
+
+.control-group {
+  display: flex;
+  gap: 6px; /* 同一行按钮之间 */
+  flex-wrap: wrap;
 }
 
 /* 上面颜色按钮 */
