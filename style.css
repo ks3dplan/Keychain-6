@@ -7,10 +7,8 @@
 html, body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  background: #ffffff;
-  font-family: system-ui, sans-serif;
-  overflow: auto; /* ⭐ 允许滚动 */
+  height: 100%;
+  overflow: hidden; /* ⭐⭐⭐ 必须 */
 }
 
 .app {
@@ -104,6 +102,7 @@ html, body {
   margin: 0;
   background: #fff;
   overflow: visible;     /* ⭐ 关键 */
+  touch-action: pinch-zoom; /* ⭐ 只允许双指 */
 }
 
 /* grid 本身 */
@@ -130,6 +129,7 @@ html, body {
   border: 1px solid #ccc;
   position: relative;
   cursor: pointer;
+  touch-action: none; /* ⭐ 单指不会触发浏览器行为 */
 }
 
 .pixel::after {
