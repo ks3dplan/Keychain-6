@@ -194,15 +194,16 @@ grid.addEventListener("wheel", (e) => {
    电脑：右键拖动画布
 ================================ */
 grid.addEventListener("mousedown", (e) => {
-  if (e.button !== 2) return;
+  // 右键(2) 或 中键(1) 才触发拖动
+  if (e.button !== 2 && e.button !== 1) return;
 
   isPanningMouse = true;
   lastMouse = { x: e.clientX, y: e.clientY };
-  e.preventDefault();
+  e.preventDefault(); // 禁止右键菜单
 });
 
 document.addEventListener("mousemove", (e) => {
-  if (!isPanningMouse) return;
+  if (!isPanningMouse) return; // ⭐ 正确逻辑：没在拖就退出
 
   offsetX += e.clientX - lastMouse.x;
   offsetY += e.clientY - lastMouse.y;
@@ -272,4 +273,36 @@ setColor("black");
 if ("ontouchstart" in window && !localStorage.getItem("touchTipShown")) {
   alert("How to use:\n• One finger: Draw\n• Two fingers: Zoom & Pan");
   localStorage.setItem("touchTipShown", "1");
+}
+
+/* ===============================
+   Export PNG
+================================ */
+function exportPNG() {
+  const grid = document.getElementById("grid");
+
+  // 临时包一层 export 容器
+  const exportArea = document.createElement("div");
+  exportArea.style.display = "inline-block";
+  exportArea.style.background = "#ffffff";
+  exportArea.style.padding = "10px";
+
+  const clone = grid.cloneNode(true);
+  clone.style.transform = "none"; // 移除缩放位移
+  clone.style.position = "static";
+
+  exportArea.appendChild(clone);
+  document.body.appendChild(exportArea);
+
+  html2canvas(exportArea, {
+    backgroundColor: "#ffffff",
+    scale: 3
+  }).then(canvas => {
+    const link = document.createElement("a");
+    link.download = "pixcore-design.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+
+    document.body.removeChild(exportArea);
+  });
 }

@@ -53,15 +53,30 @@
       <button class="color purple" onclick="setColor('purple')"><span>607</span></button>
     </div>
 
-    <!-- 中间画布（⚠️ 你刚刚少掉的就是这里） -->
-      <div class="app">
-    <div class="safe-area">
-      <div class="canvas-area">
-        <div class="main-area">
-          <div class="canvas-viewport">
-            <div id="grid"></div>
-</div>
-</div>
+   <!-- 中：画布 -->
+  <div class="main-area">
+    <div class="canvas-viewport">
+      <div id="grid"></div>
+    </div>
+  </div>
+
+  <!-- 右：Instruction -->
+  <div class="instruction-panel">
+    <h3>How to Use</h3>
+
+    <h4>Desktop</h4>
+    <ul>
+      <li>Left click: Draw</li>
+      <li>Right click + drag: Move canvas</li>
+      <li>Mouse wheel: Zoom in / out</li>
+    </ul>
+
+    <h4>Mobile</h4>
+    <ul>
+      <li>One finger: Draw</li>
+      <li>Two fingers: Move & zoom</li>
+    </ul>
+  </div>
 
   </div>
 
