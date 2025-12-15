@@ -89,7 +89,7 @@ pixel.addEventListener(
 }
 
 if ("ontouchstart" in window && !localStorage.getItem("touchTipShown")) {
-  alert("提示：\n单指上色\n双指滚动 / 缩放");
+  alert("How to Used：\n One-finger: Draw\n Two-finger: Scroll / Zoom");
   localStorage.setItem("touchTipShown", "1");
 }
 
